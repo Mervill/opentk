@@ -47,6 +47,7 @@ namespace OpenTK.Platform
         /// </summary>
         void Run(double updateRate);
 
+#if OPENGL
         /// <summary>
         /// Makes the GraphicsContext current on the calling thread.
         /// </summary>
@@ -56,6 +57,7 @@ namespace OpenTK.Platform
         /// Swaps the front and back buffers of the current GraphicsContext, presenting the rendered scene to the user.
         /// </summary>
         void SwapBuffers();
+#endif
 
         /// <summary>
         /// Occurs before the window is displayed for the first time.

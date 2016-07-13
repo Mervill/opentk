@@ -39,11 +39,13 @@ namespace OpenTK.Platform
 
         IDisplayDeviceDriver CreateDisplayDeviceDriver();
 
+#if OPENGL
         IGraphicsContext CreateGLContext(GraphicsMode mode, IWindowInfo window, IGraphicsContext shareContext, bool directRendering, int major, int minor, GraphicsContextFlags flags);
 
         IGraphicsContext CreateGLContext(ContextHandle handle, IWindowInfo window, IGraphicsContext shareContext, bool directRendering, int major, int minor, GraphicsContextFlags flags);
 
         GraphicsContext.GetCurrentContextDelegate CreateGetCurrentGraphicsContext();
+#endif
 
         OpenTK.Input.IKeyboardDriver2 CreateKeyboardDriver();
 

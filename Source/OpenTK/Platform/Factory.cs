@@ -57,18 +57,20 @@ namespace OpenTK.Platform
             Toolkit.Init();
 
             // Create regular platform backend
-            #if SDL2
-            if (Configuration.RunningOnSdl2) Default = new SDL2.Sdl2Factory();
-            #endif
             #if WIN32
-            else if (Configuration.RunningOnWindows) Default = new Windows.WinFactory();
+            if (Configuration.RunningOnWindows) Default = new Windows.WinFactory();
+            #endif
+            #if SDL2
+            else if (Configuration.RunningOnSdl2) Default = new SDL2.Sdl2Factory();
             #endif
             #if CARBON
             else if (Configuration.RunningOnMacOS) Default = new MacOS.MacOSFactory();
             #endif
             #if X11
             else if (Configuration.RunningOnX11) Default = new X11.X11Factory();
+            #if OPENGL
             else if (Configuration.RunningOnLinux) Default = new Linux.LinuxFactory();
+            #endif
             #endif
             if (Default == null)
                 Default = new UnsupportedPlatform();
@@ -85,7 +87,7 @@ namespace OpenTK.Platform
             }
             #if IPHONE
             else if (Configuration.RunningOnIOS) Embedded = new iPhoneOS.iPhoneFactory();
-            #else
+            #elif OPENGLES
             else if (Egl.Egl.IsSupported)
             {
                 if (Configuration.RunningOnLinux) Embedded = Default;
@@ -144,6 +146,7 @@ namespace OpenTK.Platform
             return default_implementation.CreateDisplayDeviceDriver();
         }
 
+#if OPENGL
         public IGraphicsContext CreateGLContext(GraphicsMode mode, IWindowInfo window, IGraphicsContext shareContext, bool directRendering, int major, int minor, GraphicsContextFlags flags)
         {
             return default_implementation.CreateGLContext(mode, window, shareContext, directRendering, major, minor, flags);
@@ -158,6 +161,7 @@ namespace OpenTK.Platform
         {
             return default_implementation.CreateGetCurrentGraphicsContext();
         }
+#endif
 
         public IKeyboardDriver2 CreateKeyboardDriver()
         {
@@ -212,6 +216,7 @@ namespace OpenTK.Platform
                 throw new PlatformNotSupportedException(error_string);
             }
 
+#if OPENGL
             public override IGraphicsContext CreateGLContext(GraphicsMode mode, IWindowInfo window, IGraphicsContext shareContext, bool directRendering, int major, int minor, GraphicsContextFlags flags)
             {
                 throw new PlatformNotSupportedException(error_string);
@@ -226,6 +231,7 @@ namespace OpenTK.Platform
             {
                 throw new PlatformNotSupportedException(error_string);
             }
+#endif
 
             public override IKeyboardDriver2 CreateKeyboardDriver()
             {

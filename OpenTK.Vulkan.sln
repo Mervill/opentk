@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTK.Vulkan", "Source\OpenTK\OpenTK.Vulkan.csproj", "{A37A7E14-0000-0000-0000-000000000000}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenTK.Vulkan.Example", "Source\OpenTK.Vulkan.Example\OpenTK.Vulkan.Example.csproj", "{9059B7FE-05F3-4294-9B87-2EADFAD13688}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		DebugMinimal|Any CPU = DebugMinimal|Any CPU
+		Documentation|Any CPU = Documentation|Any CPU
+		Nsis|Any CPU = Nsis|Any CPU
+		Release|Any CPU = Release|Any CPU
+		ReleaseMinimal|Any CPU = ReleaseMinimal|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A37A7E14-0000-0000-0000-000000000000}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A37A7E14-0000-0000-0000-000000000000}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A37A7E14-0000-0000-0000-000000000000}.DebugMinimal|Any CPU.ActiveCfg = DebugMinimal|Any CPU
+		{A37A7E14-0000-0000-0000-000000000000}.DebugMinimal|Any CPU.Build.0 = DebugMinimal|Any CPU
+		{A37A7E14-0000-0000-0000-000000000000}.Documentation|Any CPU.ActiveCfg = Documentation|Any CPU
+		{A37A7E14-0000-0000-0000-000000000000}.Nsis|Any CPU.ActiveCfg = Nsis|Any CPU
+		{A37A7E14-0000-0000-0000-000000000000}.Nsis|Any CPU.Build.0 = Nsis|Any CPU
+		{A37A7E14-0000-0000-0000-000000000000}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A37A7E14-0000-0000-0000-000000000000}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A37A7E14-0000-0000-0000-000000000000}.ReleaseMinimal|Any CPU.ActiveCfg = ReleaseMinimal|Any CPU
+		{A37A7E14-0000-0000-0000-000000000000}.ReleaseMinimal|Any CPU.Build.0 = ReleaseMinimal|Any CPU
+		{9059B7FE-05F3-4294-9B87-2EADFAD13688}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9059B7FE-05F3-4294-9B87-2EADFAD13688}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9059B7FE-05F3-4294-9B87-2EADFAD13688}.DebugMinimal|Any CPU.ActiveCfg = Debug|Any CPU
+		{9059B7FE-05F3-4294-9B87-2EADFAD13688}.DebugMinimal|Any CPU.Build.0 = Debug|Any CPU
+		{9059B7FE-05F3-4294-9B87-2EADFAD13688}.Documentation|Any CPU.ActiveCfg = Debug|Any CPU
+		{9059B7FE-05F3-4294-9B87-2EADFAD13688}.Documentation|Any CPU.Build.0 = Debug|Any CPU
+		{9059B7FE-05F3-4294-9B87-2EADFAD13688}.Nsis|Any CPU.ActiveCfg = Release|Any CPU
+		{9059B7FE-05F3-4294-9B87-2EADFAD13688}.Nsis|Any CPU.Build.0 = Release|Any CPU
+		{9059B7FE-05F3-4294-9B87-2EADFAD13688}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9059B7FE-05F3-4294-9B87-2EADFAD13688}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9059B7FE-05F3-4294-9B87-2EADFAD13688}.ReleaseMinimal|Any CPU.ActiveCfg = Release|Any CPU
+		{9059B7FE-05F3-4294-9B87-2EADFAD13688}.ReleaseMinimal|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Source\Examples\OpenTK.Examples.csproj
+	EndGlobalSection
+EndGlobal

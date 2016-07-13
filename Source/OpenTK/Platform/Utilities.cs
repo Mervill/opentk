@@ -180,6 +180,8 @@ namespace OpenTK.Platform
 
         #endregion
 
+        #if OPENGL
+
         #region CreateGetAddress
 
         internal static GraphicsContext.GetAddressDelegate CreateGetAddress()
@@ -394,6 +396,8 @@ namespace OpenTK.Platform
         #endregion
 
         #endregion
+
+        #endif
 
         #region RelaxGraphicsMode
 

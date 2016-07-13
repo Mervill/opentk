@@ -85,7 +85,9 @@ namespace OpenTK
         #pragma warning restore 612,618
 
 
+#if OPENGL
         IGraphicsContext glContext;
+#endif
 
         bool isExiting = false;
 
@@ -163,6 +165,7 @@ namespace OpenTK
 
         #endregion
 
+#if OPENGL
         #region public GameWindow(int width, int height, GraphicsMode mode, string title, GameWindowFlags options, DisplayDevice device)
 
         /// <summary>Constructs a new GameWindow with the specified attributes.</summary>
@@ -235,6 +238,45 @@ namespace OpenTK
         }
 
         #endregion
+#endif
+
+#if VULKAN
+        #region public GameWindow(int width, int height, GraphicsMode mode, string title, GameWindowFlags options, DisplayDevice device)
+
+        /// <summary>Constructs a new GameWindow with the specified attributes.</summary>
+        /// <param name="width">The width of the GameWindow in pixels.</param>
+        /// <param name="height">The height of the GameWindow in pixels.</param>
+        /// <param name="mode">The OpenTK.Graphics.GraphicsMode of the GameWindow.</param>
+        /// <param name="title">The title of the GameWindow.</param>
+        /// <param name="options">GameWindow options regarding window appearance and behavior.</param>
+        /// <param name="device">The OpenTK.Graphics.DisplayDevice to construct the GameWindow in.</param>
+        public GameWindow(int width, int height, GraphicsMode mode, string title, GameWindowFlags options, DisplayDevice device)
+            : this(width, height, mode, title, options, device, 1, 0)
+        { }
+
+        #endregion
+        
+        #region public GameWindow(int width, int height, GraphicsMode mode, string title, GameWindowFlags options, DisplayDevice device, int major, int minor)
+
+        /// <summary>Constructs a new GameWindow with the specified attributes.</summary>
+        /// <param name="width">The width of the GameWindow in pixels.</param>
+        /// <param name="height">The height of the GameWindow in pixels.</param>
+        /// <param name="mode">The OpenTK.Graphics.GraphicsMode of the GameWindow.</param>
+        /// <param name="title">The title of the GameWindow.</param>
+        /// <param name="options">GameWindow options regarding window appearance and behavior.</param>
+        /// <param name="device">The OpenTK.Graphics.DisplayDevice to construct the GameWindow in.</param>
+        /// <param name="major">The major version for the OpenGL GraphicsContext.</param>
+        /// <param name="minor">The minor version for the OpenGL GraphicsContext.</param>
+        /// <param name="flags">The GraphicsContextFlags version for the OpenGL GraphicsContext.</param>
+        /// <param name="sharedContext">An IGraphicsContext to share resources with.</param>
+        public GameWindow(int width, int height, GraphicsMode mode, string title, GameWindowFlags options, DisplayDevice device, int major, int minor)
+            : base(width, height, title, options, mode == null ? GraphicsMode.Default : mode, device == null ? DisplayDevice.Default : device)
+        {
+            
+        }
+
+        #endregion
+#endif
 
         #endregion
 
@@ -255,6 +297,7 @@ namespace OpenTK
             }
             finally
             {
+#if OPENGL
                 try
                 {
                     if (glContext != null)
@@ -267,6 +310,9 @@ namespace OpenTK
                 {
                     base.Dispose();
                 }
+#else
+				base.Dispose();
+#endif
             }
             GC.SuppressFinalize(this);
         }
@@ -291,6 +337,7 @@ namespace OpenTK
 
         #region MakeCurrent
 
+#if OPENGL
         /// <summary>
         /// Makes the GraphicsContext current on the calling thread.
         /// </summary>
@@ -300,6 +347,7 @@ namespace OpenTK
             Context.MakeCurrent(WindowInfo);
         }
 
+#endif
         #endregion
 
         #region OnClose
@@ -531,6 +579,7 @@ namespace OpenTK
 
         #region SwapBuffers
 
+#if OPENGL
         /// <summary>
         /// Swaps the front and back buffer, presenting the rendered scene to the user.
         /// </summary>
@@ -540,6 +589,7 @@ namespace OpenTK
             this.Context.SwapBuffers();
         }
 
+#endif
         #endregion
 
         #endregion
@@ -548,6 +598,7 @@ namespace OpenTK
 
         #region Context
 
+#if OPENGL
         /// <summary>
         /// Returns the opengl IGraphicsContext associated with the current GameWindow.
         /// </summary>
@@ -560,6 +611,7 @@ namespace OpenTK
             }
         }
 
+#endif
         #endregion
 
         #region IsExiting
@@ -885,6 +937,7 @@ namespace OpenTK
 
         #region VSync
 
+#if OPENGL
         /// <summary>
         /// Gets or sets the VSyncMode.
         /// </summary>
@@ -928,6 +981,7 @@ namespace OpenTK
             }
         }
 
+#endif
         #endregion
 
         #region WindowState
@@ -944,10 +998,12 @@ namespace OpenTK
             set
             {
                 base.WindowState = value;
+#if OPENGL
                 Debug.Print("Updating Context after setting WindowState to {0}", value);
 
                 if (Context != null)
                     Context.Update(WindowInfo);
+#endif
             }
         }
         #endregion
@@ -1048,7 +1104,9 @@ namespace OpenTK
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
+#if OPENGL
             glContext.Update(base.WindowInfo);
+#endif
         }
 
         #endregion
@@ -1088,8 +1146,9 @@ namespace OpenTK
 
         private void OnWindowInfoChangedInternal(EventArgs e)
         {
+#if OPENGL
             glContext.MakeCurrent(WindowInfo);
-
+#endif
             OnWindowInfoChanged(e);
         }
 
@@ -1099,6 +1158,7 @@ namespace OpenTK
     }
 
     #region public enum VSyncMode
+#if OPENGL
 
     /// <summary>
     /// Enumerates available VSync modes.
@@ -1120,5 +1180,6 @@ namespace OpenTK
         Adaptive,
     }
 
+#endif
     #endregion
 }

@@ -96,6 +96,7 @@ namespace OpenTK.Platform.Windows
             return new WinDisplayDeviceDriver();
         }
 
+#if OPENGL
         public override IGraphicsContext CreateGLContext(GraphicsMode mode, IWindowInfo window, IGraphicsContext shareContext, bool directRendering, int major, int minor, GraphicsContextFlags flags)
         {
             return new WinGLContext(mode, (WinWindowInfo)window, shareContext, major, minor, flags);
@@ -113,6 +114,7 @@ namespace OpenTK.Platform.Windows
                 return new ContextHandle(Wgl.GetCurrentContext());
             };
         }
+#endif
 
         public override OpenTK.Input.IKeyboardDriver2 CreateKeyboardDriver()
         {
