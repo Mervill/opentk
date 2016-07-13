@@ -45,8 +45,12 @@ namespace OpenTK.Platform.Windows
     /// Drives GameWindow on Windows.
     /// This class supports OpenTK, and is not intended for use by OpenTK programs.
     /// </summary>
-    internal sealed class WinGLNative : NativeWindowBase
+    public sealed class WinGLNative : NativeWindowBase
     {
+        // temp!
+        public IntPtr Vulkan_InstancePtr { get { return Instance; } }
+        public IntPtr Vulkan_WndPtr { get { return child_window.Handle; } }
+
         #region Fields
 
         const ExtendedWindowStyle ParentStyleEx = ExtendedWindowStyle.WindowEdge | ExtendedWindowStyle.ApplicationWindow;

@@ -42,6 +42,9 @@ namespace OpenTK
     /// </summary>
     public class NativeWindow : INativeWindow
     {
+        // temp!
+        public INativeWindow GetImplementation() { return implementation; }
+
         #region --- Fields ---
 
         private readonly GameWindowFlags options;

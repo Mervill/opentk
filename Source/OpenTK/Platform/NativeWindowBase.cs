@@ -38,7 +38,7 @@ using OpenTK.Input;
 namespace OpenTK.Platform
 {
     // Common base class for all INativeWindow implementations
-    abstract class NativeWindowBase : INativeWindow
+    public abstract class NativeWindowBase : INativeWindow
     {
         #pragma warning disable 612,618
         readonly LegacyInputDriver LegacyInputDriver;
